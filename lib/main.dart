@@ -1,48 +1,49 @@
 import 'package:flutter/material.dart';
 
 void main() {
- runApp(MYmaterialApp());
+  runApp(MyApp());
 }
-// create material widget
-class MYmaterialApp extends StatelessWidget{
+
+class MyApp extends StatefulWidget {
   @override
+  State<StatefulWidget> createState() {
+    return Mystate();
+  }
+}
+
+class Mystate extends State<MyApp> {
+  @override 
+  int count = 0;
   Widget build(BuildContext context) {
-    // TODO: implement build
-   return MaterialApp(
-     home: Scaffold(
-      appBar: AppBar(
-        title: Text("Nagham APP"),
-        backgroundColor: Colors.orange,
-        centerTitle: true,
+   
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.cyan,
+          title: Center(
+            child: Text(
+              "N.M.M App",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                child: Text("Click to +1",style: TextStyle(color:Colors.red,fontSize: 20 ),),
+                onPressed: () {
+                  setState(() {
+                    count++;
+                  });
+                },
+              ),
+              Text("Counter : $count",style: TextStyle(color: Colors.red,fontSize: 30),)
+            ],
+          ),
+        ),
       ),
-      body: myBody(),
-     ),
-   );
+    );
   }
-
-}
-//create widget
-class myBody extends StatelessWidget{
-  int counter=0;
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-   return Center(
-     child: Column(
-      mainAxisAlignment: MainAxisAlignment.center, 
-       children: [
-         ElevatedButton(
-              child: Text("Click"),
-              onPressed: (){
-                counter++;
-                print("$counter ");
-              }
-         ),
-         Text("Click to change counter +1:"),
-         Text("$counter"),
-       ],
-     ),
-   );
-  }
-
 }
